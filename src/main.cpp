@@ -1,24 +1,19 @@
 
-#include <chrono>
-#include <cstdlib>
 #include <iostream>
-#include <random>
 #include <vector>
+#include "Utils/RandomNumberGenerator.hpp"
 using namespace std;
+using namespace AuC_Utils;
 
 vector<int> GetRandomSequence(int dataPoints)
 {
+	NumberGenerator generator(1, 500);
 	vector<int> discreteData;
 	discreteData.reserve(dataPoints);
 	
-	uint seed = chrono::system_clock::now().time_since_epoch().count();
-	default_random_engine generator(seed);
-
-	uniform_int_distribution<int> distribution(1, 500);
-	
 	for(int i = 0; i < dataPoints; ++i)
 	{
-		discreteData.push_back(distribution(generator));
+		discreteData.push_back(generator.GetRandomNumber());
 	} // end for
 	
 	return discreteData;
