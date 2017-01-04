@@ -1,5 +1,5 @@
 all: CreateUtils
-	g++ -Wall main.cpp out/*.o  -o out/areaCalc -std=c++11
+	g++ -Wall main.cpp out/*.o -o out/areaCalc -std=c++11
 
 CreateUtils: CreateOut
 	make -C Utils
