@@ -1,0 +1,17 @@
+#include <fstream>
+#include <sstream>
+#include <string>
+std::ifstream infile("thefile.txt");
+
+//Line-based parsing, using string streams:
+
+std::string line;
+while (std::getline(infile, line))
+{
+    std::istringstream iss(line);
+    int a, b;
+    if (!(iss >> a >> b)) { break; } // error
+
+    // process pair (a,b)
+}
+
