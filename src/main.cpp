@@ -14,8 +14,8 @@ vector<DataPoint> GetRandomSequence(int dataPoints)
 	
 	for(int i = 0; i <= dataPoints; ++i)
 	{
-		//discreteData.push_back(DataPoint(i, generator.GetRandomNumber()));
-		discreteData.push_back(DataPoint(i, i*i + i + 3));
+		discreteData.push_back(DataPoint(i, generator.GetRandomNumber()));
+		//discreteData.push_back(DataPoint(i, i*i + i + 3));
 	} // end for
 	
 	return discreteData;
