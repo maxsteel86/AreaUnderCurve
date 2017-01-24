@@ -1,8 +1,21 @@
-all: CreateUtils
-	g++ -Wall main.cpp out/*.o -o out/areaCalc -std=c++11
+CC=g++
+CFLAGS=-std=c++11
+OUTPUTDIR=out
 
-CreateUtils: CreateOut
+all: CreateUtils InitOutputDir AreaCalc CleanUp
+
+AreaCalc:
+	$(CC) -Wall main.cpp $(OUTPUTDIR)/*.o -o $(OUTPUTDIR)/areaCalc $(CFLAGS)
+
+InitOutputDir:
+	mkdir -p $(OUTPUTDIR)
+	mv Utils/*.o $(OUTPUTDIR)
+
+CreateUtils:
 	make -C Utils
 
-CreateOut:
-	mkdir -p out
+CleanUp:
+	rm out/*.o
+
+clean:
+	rm -rf $(OUTPUTDIR)

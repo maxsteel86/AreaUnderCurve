@@ -7,9 +7,9 @@ namespace AuC_Utils
 	class DataPoint
 	{
 		public:
-			int X;
-			int Y;
-			DataPoint(int x, int y);
+			double X;
+			double Y;
+			DataPoint(double x, double y);
 	};
 } // end namespace
 

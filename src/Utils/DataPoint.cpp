@@ -3,7 +3,7 @@
 
 namespace AuC_Utils
 {
-	DataPoint::DataPoint(int x, int y)
+	DataPoint::DataPoint(double x, double y)
 	{
 		DataPoint::X = x;
 		DataPoint::Y = y;

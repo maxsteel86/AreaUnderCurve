@@ -3,6 +3,7 @@
 #include <vector>
 #include "Utils/RandomNumberGenerator.hpp"
 #include "Utils/DataPoint.hpp"
+#include "Utils/DataGrabber.hpp"
 using namespace std;
 using namespace AuC_Utils;
 
@@ -21,22 +22,37 @@ vector<DataPoint> GetRandomSequence(int dataPoints)
 	return discreteData;
 } // end method
 
-int main(int argc, char *argv[])
+double GetArea(vector<DataPoint> discreteData)
 {
-	const int DATAPOINT_COUNT = 100;
-	vector<DataPoint> discreteData = GetRandomSequence(DATAPOINT_COUNT);
+	int dataSize = discreteData.size();
 	
-	int sum = discreteData[0].Y + discreteData[discreteData.size() - 1].Y;
-	for(uint i = 1; i < discreteData.size() - 1; i++)
+	double sum = discreteData[0].Y + discreteData[dataSize - 1].Y;
+	for(int i = 1; i < dataSize - 1; i++)
 	{
-		//cout << discreteData[i].X << ", " << discreteData[i].Y << endl;
 		sum += discreteData[i].Y * 2;
 	} // end for
-	double multiple = ((double)(discreteData[discreteData.size() - 1].X - discreteData[0].X)) / ((double)(discreteData.size() - 1) * 2.0);
 	
-	cout << discreteData[discreteData.size() - 1].X << " " << discreteData[0].X << endl;
-	cout << discreteData.size() << endl;
-	cout << "Area: " << (double)sum * multiple << endl;
+	double multiple = ((double)(discreteData[dataSize - 1].X - discreteData[0].X)) / ((double)(dataSize - 1) * 2.0);
+	
+	return sum * multiple;
+} // end method
+
+int main(int argc, char *argv[])
+{
+	if(argc != 1)
+	{
+		DataGrabber dataGrabber(argv[1]);
+		vector<DataPoint> data = dataGrabber.GetDataPoints();
+		
+		double area = GetArea(data);
+		cout << "Area: " << area << endl;
+	} // end if
+	
+	//const int DATAPOINT_COUNT = 100;
+	//vector<DataPoint> discreteData = GetRandomSequence(DATAPOINT_COUNT);
+	
+	//double area = GetArea(discreteData);
+	//cout << "Area: " << area << endl;
 	
 	return 0;
 } // end method
