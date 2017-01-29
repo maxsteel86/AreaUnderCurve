@@ -4,6 +4,7 @@
 #include "Utils/RandomNumberGenerator.hpp"
 #include "Utils/DataPoint.hpp"
 #include "Utils/DataGrabber.hpp"
+
 using namespace std;
 using namespace AuC_Utils;
 
@@ -37,22 +38,29 @@ double GetArea(vector<DataPoint> discreteData)
 	return sum * multiple;
 } // end method
 
+void RandomSequenceArea()
+{
+    const int DATAPOINT_COUNT = 100;
+	vector<DataPoint> discreteData = GetRandomSequence(DATAPOINT_COUNT);
+	
+	double area = GetArea(discreteData);
+	cout << "Area: " << area << endl;
+} // end method
+
 int main(int argc, char *argv[])
 {
-	if(argc != 1)
+	if(argc == 1)
 	{
-		DataGrabber dataGrabber(argv[1]);
-		vector<DataPoint> data = dataGrabber.GetDataPoints();
-		
-		double area = GetArea(data);
-		cout << "Area: " << area << endl;
+		cout << "Error in usage" << endl;
+        
+        return 0;
 	} // end if
-	
-	//const int DATAPOINT_COUNT = 100;
-	//vector<DataPoint> discreteData = GetRandomSequence(DATAPOINT_COUNT);
-	
-	//double area = GetArea(discreteData);
-	//cout << "Area: " << area << endl;
-	
-	return 0;
+    
+    DataGrabber dataGrabber(argv[1]);
+    vector<DataPoint> data = dataGrabber.GetDataPoints();
+		
+    double area = GetArea(data);
+    cout << "Area: " << area << endl;
+    
+    return 0;
 } // end method
