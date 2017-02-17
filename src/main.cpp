@@ -26,7 +26,7 @@ double GetArea(vector<DataPoint> discreteData)
 
 void PrintArea(vector<DataPoint> dataSequence)
 {
-    cout << "Area: " << GetArea(randomSequence) << endl;
+    cout << "Area: " << GetArea(dataSequence) << endl;
 } // end method
 
 int main(int argc, char *argv[])
