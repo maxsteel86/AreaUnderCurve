@@ -5,7 +5,8 @@ OUTPUTDIR=out
 all: CreateUtils InitOutputDir AreaCalc CleanUp
 
 AreaCalc:
-	$(CC) -Wall main.cpp RandomSequence.cpp TextFileSequence.cpp $(OUTPUTDIR)/*.o -o $(OUTPUTDIR)/areaCalc $(CFLAGS)
+	$(CC) -Wall -c AreaCalculator.cpp -o $(OUTPUTDIR)/AreaCalulationEngine.o $(CFLAGS)
+	$(CC) -Wall main.cpp $(OUTPUTDIR)/*.o -o $(OUTPUTDIR)/areaCalc $(CFLAGS)
 
 InitOutputDir:
 	mkdir -p $(OUTPUTDIR)
